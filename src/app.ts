@@ -1,19 +1,23 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import routes from "./routes/routes";
+import errorHandler from "./middlewares/errorHandler";
 
 const PORT = process.env.PORT || 4000;
-const server = express();
+const app = express();
 
-server.use(express.json());
-server.use(cors());
+app.use(express.json());
+app.use(cors());
+app.use("/api/v1", routes);
+app.use(errorHandler);
 
-server.use((req, res) => {
+app.use((req, res) => {
   res.status(404);
 });
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Conectado ${PORT}`);
 });
 
-export default server;
+export default app;
