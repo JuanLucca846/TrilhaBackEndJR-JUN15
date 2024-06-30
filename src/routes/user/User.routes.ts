@@ -9,7 +9,7 @@ const userRoutes: Router = Router();
 const validator = createValidator();
 
 userRoutes.post(
-  "/createUser",
+  "/signUp",
   validator.body(createUserSchema),
   new CreateUserController().handle
 );

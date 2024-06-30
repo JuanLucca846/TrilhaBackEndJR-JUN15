@@ -13,7 +13,7 @@ class UserLoginController {
         password,
       });
 
-      return res.status(200).json({ token: login });
+      return res.status(201).json({ token: login });
     } catch (error) {
       next(error);
     }
