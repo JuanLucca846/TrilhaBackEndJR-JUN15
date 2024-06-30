@@ -1,9 +1,9 @@
 import prismaClient from "../../database/prisma/prismaClient";
-import { IUserRequest } from "../../models/user/User";
+import { ICreateUserRequest } from "../../models/user/User";
 import bcrypt from "bcryptjs";
 
 class CreateUserService {
-  async execute({ name, email, password }: IUserRequest) {
+  async execute({ name, email, password }: ICreateUserRequest) {
     const checkIfUserExists = await prismaClient.user.findUnique({
       where: {
         email,
